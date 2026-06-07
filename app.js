@@ -48,6 +48,29 @@ function showLesson(index) {
 // این همان خطی است که جا افتاده بود و اضافه شد:
 showLesson(currentLessonIndex);
 
+const quizContainer = document.getElementById("quiz-container");
+const questionElement = document.getElementById("quiz-question");
+const optionsContainer = document.getElementById("options-container");
+const feedbackElement = document.getElementById("quiz-feedback");
+
+function showQuiz(index) {
+    feedbackElement.innerText = ""; // پاک کردن متن جواب قبلی
+    optionsContainer.innerHTML = ""; // پاک کردن گزینه‌های قبلی
+    quizContainer.style.display = "block"; // نمایش باکس آزمون
+    nextButton.style.display = "none"; // مخفی کردن دکمه درس بعدی تا زمان پاسخگویی
+
+    questionElement.innerText = quizzes[index].question;
+
+    quizzes[index].options.forEach((option, i) => {
+        const button = document.createElement("button");
+        button.innerText = option;
+        button.style = "background-color: #333; color: #fff; border: 1px solid #555; padding: 10px; border-radius: 8px; cursor: pointer; text-align: right;";
+        
+        button.addEventListener("click", () => checkAnswer(i, quizzes[index].correct));
+        optionsContainer.appendChild(button);
+    });
+}
+
 nextButton.addEventListener("click", () => {
     currentLessonIndex++;
     if (currentLessonIndex < lessons.length) {
