@@ -81,3 +81,14 @@ nextButton.addEventListener("click", () => {
         nextButton.style.display = "none";
     }
 });
+
+function checkAnswer(selectedIndex, correctIndex) {
+    if (selectedIndex === correctIndex) {
+        feedbackElement.innerText = "✅ آفرین! پاسخ شما کاملاً درست است.";
+        feedbackElement.style.color = "#4caf50";
+        nextButton.style.display = "inline-block"; // اجازه عبور به درس بعدی
+    } else {
+        feedbackElement.innerText = "❌ پاسخ اشتباه بود. دوباره تلاش کنید!";
+        feedbackElement.style.color = "#f44336";
+    }
+}
