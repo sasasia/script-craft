@@ -14,13 +14,25 @@
         </nav>
     </header>
 
-    <main style="max-width: 800px; margin: 80px auto; padding: 20px;">
+        <main style="max-width: 800px; margin: 40px auto; padding: 20px;">
+        <!-- باکس نمایش درس -->
         <div id="lesson-container" style="background-color: #2a2a2a; padding: 30px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
-            <h2 id="lesson-title" style="color: #ffcc00;">به بخش آموزش خوش آمدید!</h2>
-            <p id="lesson-content" style="font-size: 18px; line-height: 1.8; color: #ccc;">روی دکمه زیر کلیک کنید تا اولین درس فیلم‌نامه‌نویسی آغاز شود.</p>
+            <h2 id="lesson-title" style="color: #ffcc00;"></h2>
+            <p id="lesson-content" style="font-size: 18px; line-height: 1.8; color: #ccc;"></p>
         </div>
+
+        <!-- باکس نمایش آزمون (در ابتدا مخفی است) -->
+        <div id="quiz-container" style="display: none; background-color: #222; padding: 30px; border-radius: 15px; margin-bottom: 20px; border: 2px solid #ffcc00;">
+            <h3 id="quiz-question" style="color: #fff; margin-bottom: 20px;">سوال آزمون اینجا قرار می‌گیرد</h3>
+            <div id="options-container" style="display: flex; flex-direction: column; gap: 10px;">
+                <!-- گزینه‌ها با جاوااسکریپت اینجا ساخته می‌شوند -->
+            </div>
+            <p id="quiz-feedback" style="font-size: 16px; font-weight: bold; margin-top: 15px;"></p>
+        </div>
+
         <button id="next-btn" style="background-color: #ffcc00; color: #000; border: none; padding: 12px 30px; font-size: 16px; font-weight: bold; border-radius: 25px; cursor: pointer;">درس بعدی ➔</button>
     </main>
+
 
     <script src="app.js"></script>
 </body>
