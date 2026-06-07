@@ -15,3 +15,24 @@ const lessons = [
         content: "داستان به اوج خود (Climax) می‌رسد. قهرمان در نبرد نهایی شرکت می‌کند، گره‌های داستان باز می‌شوند و دنیای جدیدی شکل می‌گیرد."
     }
 ];
+let currentLessonIndex = 0;
+
+const titleElement = document.getElementById("lesson-title");
+const contentElement = document.getElementById("lesson-content");
+const nextButton = document.getElementById("next-btn");
+
+function showLesson(index) {
+    titleElement.innerText = lessons[index].title;
+    contentElement.innerText = lessons[index].content;
+}
+
+nextButton.addEventListener("click", () => {
+    currentLessonIndex++;
+    if (currentLessonIndex < lessons.length) {
+        showLesson(currentLessonIndex);
+    } else {
+        titleElement.innerText = "🎉 تبریک! دوره تمام شد.";
+        contentElement.innerText = "شما با موفقیت ساختار سه پرده‌ای فیلم‌نامه را یاد گرفتید.";
+        nextButton.style.display = "none";
+    }
+});
