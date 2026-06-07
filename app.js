@@ -15,6 +15,7 @@ const lessons = [
         content: "داستان به اوج خود (Climax) می‌رسد. قهرمان در نبرد نهایی شرکت می‌کند، گره‌های داستان باز می‌شوند و دنیای جدیدی شکل می‌گیرد."
     }
 ];
+
 let currentLessonIndex = 0;
 
 const titleElement = document.getElementById("lesson-title");
@@ -25,6 +26,9 @@ function showLesson(index) {
     titleElement.innerText = lessons[index].title;
     contentElement.innerText = lessons[index].content;
 }
+
+// این همان خطی است که جا افتاده بود و اضافه شد:
+showLesson(currentLessonIndex);
 
 nextButton.addEventListener("click", () => {
     currentLessonIndex++;
