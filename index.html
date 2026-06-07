@@ -4,11 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>اسکریپت‌کرفت | آموزش فیلم‌نامه‌نویسی</title>
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- اسکلت اصلی برنامه بعداً اینجا قرار می‌گیرد -->
-    <h1>به اسکریپت‌کرفت خوش آمدید</h1>
+    <header style="background-color: #111; padding: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.5);">
+        <nav style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <div style="font-size: 24px; font-weight: bold; color: #ffcc00;">🎬 ScriptCraft</div>
+            <div style="font-size: 16px; color: #aaa;">هنرجو: خوش‌آمدید!</div>
+        </nav>
+    </header>
+
+    <main style="max-width: 800px; margin: 80px auto; padding: 20px;">
+        <div id="lesson-container" style="background-color: #2a2a2a; padding: 30px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+            <h2 id="lesson-title" style="color: #ffcc00;">به بخش آموزش خوش آمدید!</h2>
+            <p id="lesson-content" style="font-size: 18px; line-height: 1.8; color: #ccc;">روی دکمه زیر کلیک کنید تا اولین درس فیلم‌نامه‌نویسی آغاز شود.</p>
+        </div>
+        <button id="next-btn" style="background-color: #ffcc00; color: #000; border: none; padding: 12px 30px; font-size: 16px; font-weight: bold; border-radius: 25px; cursor: pointer;">درس بعدی ➔</button>
+    </main>
+
     <script src="app.js"></script>
 </body>
 </html>
