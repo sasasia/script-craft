@@ -59,6 +59,7 @@ function showLesson(index) {
     
     titleElement.innerText = lessons[index].title;
     contentElement.innerText = lessons[index].content;
+    updateProgress();
 }
 
 // ۵. تابع نمایش آزمون
@@ -91,6 +92,11 @@ function checkAnswer(selectedIndex, correctIndex) {
         feedbackElement.innerText = "❌ پاسخ اشتباه بود. دوباره تلاش کنید!";
         feedbackElement.style.color = "#f44336";
     }
+}
+
+function updateProgress() {
+    const progressPercentage = ((currentLessonIndex + 1) / lessons.length) * 100;
+    progressBar.style.width = `${progressPercentage}%`;
 }
 
 // اجرای خودکار درس اول در ابتدای کار
