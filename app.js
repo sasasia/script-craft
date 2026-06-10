@@ -31,7 +31,7 @@ const quizzes = [
     },
     {
         question: "نقطه اوج داستان (Climax) معمولاً در کدام پرده رخ می‌دهد؟",
-        options: ["پرده اول", "پرده دوم", "پرده سوم (گره‌گشایی)", "در هیچکدام防"],
+        options: ["پرده اول", "پرده دوم", "پرده سوم (گره‌گشایی)", "در هیچکدام"],
         correct: 2
     }
 ];
@@ -68,13 +68,16 @@ function showLesson(index) {
     contentElement.innerText = lessons[index].content;
     
     updateProgress();
+    
+    // اصلاحیه: رنگ حاشیه دقیقاً اینجا به زرد برمی‌گردد
+    quizContainer.style.borderColor = "#ffcc00"; 
 }
 
 // ۶. تابع نمایش آزمون
 function showQuiz(index) {
     feedbackElement.innerText = ""; 
     optionsContainer.innerHTML = ""; 
-        quizContainer.style.display = "block";
+    quizContainer.style.display = "block";
     quizContainer.classList.add("animate-fade-in");
  
     nextButton.style.display = "none"; 
@@ -98,11 +101,18 @@ function checkAnswer(selectedIndex, correctIndex) {
         scoreElement.innerText = score; 
         feedbackElement.innerText = "✅ آفرین! پاسخ شما کاملاً درست است. (+۱۰ امتیاز)";
         feedbackElement.style.color = "#4caf50";
+        
+        // سبز کردن حاشیه باکس آزمون به نشانه موفقیت
+        quizContainer.style.borderColor = "#4caf50";
+        
         nextButton.style.display = "inline-block"; 
         nextButton.innerText = "رفتن به درس بعدی ➔";
     } else {
         feedbackElement.innerText = "❌ پاسخ اشتباه بود. دوباره تلاش کنید!";
         feedbackElement.style.color = "#f44336";
+        
+        // قرمز کردن حاشیه باکس آزمون به نشانه اخطار
+        quizContainer.style.borderColor = "#f44336";
     }
 }
 
@@ -116,7 +126,7 @@ nextButton.addEventListener("click", () => {
     } else {
         currentLessonIndex++;
         if (currentLessonIndex < lessons.length) {
-            showLesson(currentLessonIndex);
+            showLesson(currentLessonIndex); // خط اضافه اینجا پاک شد
         } else {
             titleElement.innerText = "🎉 تبریک فراوان! دوره به پایان رسید.";
             contentElement.innerText = "شما با موفقیت ساختار سه پرده‌ای فیلم‌نامه را یاد گرفتید و تمام آزمون‌ها را پاس کردید.";
