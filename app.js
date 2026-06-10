@@ -38,6 +38,8 @@ const quizzes = [
 
 let currentLessonIndex = 0;
 let score = 0;
+let isQuizAnswered = false; // آیا به سوال فعلی پاسخ داده شده است؟
+
 
 // ۳. اتصال به عناصر صفحه HTML
 const titleElement = document.getElementById("lesson-title");
@@ -68,9 +70,10 @@ function showLesson(index) {
     contentElement.innerText = lessons[index].content;
     
     updateProgress();
-    
-    // اصلاحیه: رنگ حاشیه دقیقاً اینجا به زرد برمی‌گردد
     quizContainer.style.borderColor = "#ffcc00"; 
+    
+    // دقیقاً اینجا در انتهای تابع اضافه کنید:
+    isQuizAnswered = false; // بازنشانی برای سوال درس جدید
 }
 
 // ۶. تابع نمایش آزمون
@@ -97,24 +100,25 @@ function showQuiz(index) {
 // ۷. تابع بررسی جواب آزمون
 function checkAnswer(selectedIndex, correctIndex) {
     if (selectedIndex === correctIndex) {
-        score += 10; 
-        scoreElement.innerText = score; 
+        // فقط اگر قبلاً امتیاز این سوال را نگرفته باشد، امتیاز اضافه شود
+        if (!isQuizAnswered) {
+            score += 10; 
+            scoreElement.innerText = score; 
+            isQuizAnswered = true; // ثبت اینکه کاربر امتیاز این سوال را گرفت
+        }
+        
         feedbackElement.innerText = "✅ آفرین! پاسخ شما کاملاً درست است. (+۱۰ امتیاز)";
         feedbackElement.style.color = "#4caf50";
-        
-        // سبز کردن حاشیه باکس آزمون به نشانه موفقیت
         quizContainer.style.borderColor = "#4caf50";
-        
         nextButton.style.display = "inline-block"; 
         nextButton.innerText = "رفتن به درس بعدی ➔";
     } else {
         feedbackElement.innerText = "❌ پاسخ اشتباه بود. دوباره تلاش کنید!";
         feedbackElement.style.color = "#f44336";
-        
-        // قرمز کردن حاشیه باکس آزمون به نشانه اخطار
         quizContainer.style.borderColor = "#f44336";
     }
 }
+
 
 // اجرای خودکار درس اول در ابتدای کار
 showLesson(currentLessonIndex);
