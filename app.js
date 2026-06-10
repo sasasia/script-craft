@@ -84,10 +84,12 @@ function showQuiz(index) {
 // ۶. تابع بررسی جواب آزمون
 function checkAnswer(selectedIndex, correctIndex) {
     if (selectedIndex === correctIndex) {
-        feedbackElement.innerText = "✅ آفرین! پاسخ شما کاملاً درست است.";
+        score += 10; // اضافه شدن ۱۰ امتیاز
+        scoreElement.innerText = score; // به‌روزرسانی امتیاز روی صفحه
+        feedbackElement.innerText = "✅ آفرین! پاسخ شما کاملاً درست است. (+۱۰ امتیاز)";
         feedbackElement.style.color = "#4caf50";
-        nextButton.style.display = "inline-block"; // باز شدن دکمه عبور
-        nextButton.innerText = "رفتنی به درس بعدی ➔";
+        nextButton.style.display = "inline-block"; 
+        nextButton.innerText = "رفتن به درس بعدی ➔";
     } else {
         feedbackElement.innerText = "❌ پاسخ اشتباه بود. دوباره تلاش کنید!";
         feedbackElement.style.color = "#f44336";
