@@ -100,13 +100,11 @@ function showQuiz(index) {
 // ۷. تابع بررسی جواب آزمون
 function checkAnswer(selectedIndex, correctIndex) {
     if (selectedIndex === correctIndex) {
-        // فقط اگر قبلاً امتیاز این سوال را نگرفته باشد، امتیاز اضافه شود
         if (!isQuizAnswered) {
             score += 10; 
             scoreElement.innerText = score; 
-            isQuizAnswered = true; // ثبت اینکه کاربر امتیاز این سوال را گرفت
+            isQuizAnswered = true; 
         }
-        
         feedbackElement.innerText = "✅ آفرین! پاسخ شما کاملاً درست است. (+۱۰ امتیاز)";
         feedbackElement.style.color = "#4caf50";
         quizContainer.style.borderColor = "#4caf50";
@@ -116,8 +114,12 @@ function checkAnswer(selectedIndex, correctIndex) {
         feedbackElement.innerText = "❌ پاسخ اشتباه بود. دوباره تلاش کنید!";
         feedbackElement.style.color = "#f44336";
         quizContainer.style.borderColor = "#f44336";
+        
+        // اصلاحیه جدید: اگر کاربر بعد از پاسخ درست، گزینه غلط را زد، دکمه دوباره غیب شود
+        nextButton.style.display = "none"; 
     }
 }
+
 
 
 // اجرای خودکار درس اول در ابتدای کار
