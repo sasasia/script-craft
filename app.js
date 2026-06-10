@@ -47,6 +47,9 @@ const quizContainer = document.getElementById("quiz-container");
 const questionElement = document.getElementById("quiz-question");
 const optionsContainer = document.getElementById("options-container");
 const feedbackElement = document.getElementById("quiz-feedback");
+let score = 0;
+const scoreElement = document.getElementById("user-score");
+const progressBar = document.getElementById("progress-bar");
 
 // ۴. تابع نمایش درس
 function showLesson(index) {
