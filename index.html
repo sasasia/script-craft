@@ -16,12 +16,14 @@
 
         <main style="max-width: 800px; margin: 40px auto; padding: 20px;">
                     <!-- بخش امتیاز و نوار پیشرفت -->
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: #222; padding: 15px; border-radius: 10px;">
-            <div style="font-size: 16px; color: #fff;">امتیاز شما: <span id="user-score" style="color: #ffcc00; font-weight: bold;">0</span> 🌟</div>
-            <div style="width: 60%; background-color: #444; border-radius: 10px; height: 12px; overflow: hidden;">
-                <div id="progress-bar" style="width: 0%; background-color: #ffcc00; height: 100%; transition: width 0.5s ease;"></div>
+                <!-- بخش امتیاز و نوار پیشرفت ارتقا یافته -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; background: #222; padding: 18px 25px; border-radius: 12px; border: 1px solid #333; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+            <div style="font-size: 16px; color: #fff; font-weight: bold;">امتیاز شما: <span id="user-score" style="color: #ffcc00;">0</span> 🌟</div>
+            <div style="width: 65%; background-color: #3a3a3a; border-radius: 20px; height: 16px; overflow: hidden; padding: 2px;">
+                <div id="progress-bar" style="width: 0%; background: linear-gradient(90deg, #ffd700, #ffcc00); border-radius: 20px; height: 100%; transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);"></div>
             </div>
         </div>
+
 
         <!-- باکس نمایش درس -->
         <div id="lesson-container" style="background-color: #2a2a2a; padding: 30px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
