@@ -126,12 +126,25 @@ nextButton.addEventListener("click", () => {
     } else {
         currentLessonIndex++;
         if (currentLessonIndex < lessons.length) {
-            showLesson(currentLessonIndex); // خط اضافه اینجا پاک شد
-        } else {
-            titleElement.innerText = "🎉 تبریک فراوان! دوره به پایان رسید.";
-            contentElement.innerText = "شما با موفقیت ساختار سه پرده‌ای فیلم‌نامه را یاد گرفتید و تمام آزمون‌ها را پاس کردید.";
-            quizContainer.style.display = "none";
-            nextButton.style.display = "none";
+            showLesson(currentLessonIndex);
+        } else { // <--- منظورم دقیقاً همین ال‌اس آخری است
+            
+            // کدهای جدید کارنامه سینمایی را دقیقاً از اینجا جایگزین کنید:
+            const mainContainer = document.querySelector("main");
+            mainContainer.innerHTML = `
+                <div class="animate-fade-in" style="background: linear-gradient(145deg, #222, #111); padding: 50px 30px; border-radius: 20px; border: 2px solid #ffcc00; box-shadow: 0 10px 30px rgba(0,0,0,0.7); max-width: 600px; margin: 40px auto; border-style: dashed;">
+                    <h1 style="font-size: 50px; margin: 0 0 10px 0;">🏆</h1>
+                    <h2 style="color: #ffcc00; font-size: 28px; margin-bottom: 15px;">دیپلم افتخار فیلم‌نامه‌نویسی</h2>
+                    <p style="font-size: 18px; color: #fff; line-height: 1.8; margin-bottom: 30px;">
+                        با افتخار، شما تمامی مراحل <span style="color: #ffcc00; font-weight: bold;">«ساختار سه پرده‌ای»</span> را با موفقیت پشت سر گذاشتید و آماده خلق اولین سناریوی خود هستید!
+                    </p>
+                    <div style="background: #2a2a2a; padding: 15px 25px; border-radius: 12px; display: inline-block; border: 1px solid #333;">
+                        <span style="color: #aaa; font-size: 16px;">امتیاز نهایی شما:</span>
+                        <span style="color: #ffcc00; font-size: 24px; font-weight: bold; margin-right: 10px;">${score} از ۳۰</span>
+                    </div>
+                </div>
+            `;
+            // تا اینجا کدهای قدیمی داخل این ال‌اس را پاک و کدهای بالا را گذاشتیم
         }
     }
 });
