@@ -13,3 +13,24 @@ body {
     color: #ffffff;
     text-align: center;
 }
+/* افکت برای دکمه اصلی */
+#next-btn {
+    transition: all 0.3s ease !important;
+}
+
+#next-btn:hover {
+    background-color: #e6b800 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 204, 0, 0.4);
+}
+
+/* افکت برای دکمه‌های گزینه‌های آزمون */
+#options-container button {
+    transition: all 0.2s ease;
+}
+
+#options-container button:hover {
+    background-color: #444 !important;
+    border-color: #ffcc00 !important;
+    color: #ffcc00 !important;
+}
