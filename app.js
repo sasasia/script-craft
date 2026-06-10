@@ -30,13 +30,14 @@ const quizzes = [
         correct: 1
     },
     {
-        question: "نقطه اوج داستان (Climax) معمولاً در کدام پرده رخ می‌دهد防؟",
-        options: ["پرده اول", "پرده دوم", "پرده سوم (گره‌گشایی)", "در هیچکدام"],
+        question: "نقطه اوج داستان (Climax) معمولاً در کدام پرده رخ می‌دهد؟",
+        options: ["پرده اول", "پرده دوم", "پرده سوم (گره‌گشایی)", "در هیچکدام防"],
         correct: 2
     }
 ];
 
 let currentLessonIndex = 0;
+let score = 0;
 
 // ۳. اتصال به عناصر صفحه HTML
 const titleElement = document.getElementById("lesson-title");
@@ -47,27 +48,34 @@ const quizContainer = document.getElementById("quiz-container");
 const questionElement = document.getElementById("quiz-question");
 const optionsContainer = document.getElementById("options-container");
 const feedbackElement = document.getElementById("quiz-feedback");
-let score = 0;
+
 const scoreElement = document.getElementById("user-score");
 const progressBar = document.getElementById("progress-bar");
 
-// ۴. تابع نمایش درس
+// ۴. تابع به‌روزرسانی نوار پیشرفت
+function updateProgress() {
+    const progressPercentage = ((currentLessonIndex + 1) / lessons.length) * 100;
+    progressBar.style.width = `${progressPercentage}%`;
+}
+
+// ۵. تابع نمایش درس
 function showLesson(index) {
-    quizContainer.style.display = "none"; // مخفی کردن کوییز هنگام نمایش درس جدید
-    nextButton.style.display = "inline-block"; // نمایش دکمه برای رفتن به آزمون
-    nextButton.innerText = "شرکت در آزمون این درس ➔"; // تغییر متن دکمه
+    quizContainer.style.display = "none"; 
+    nextButton.style.display = "inline-block"; 
+    nextButton.innerText = "شرکت در آزمون این درس ➔"; 
     
     titleElement.innerText = lessons[index].title;
     contentElement.innerText = lessons[index].content;
+    
     updateProgress();
 }
 
-// ۵. تابع نمایش آزمون
+// ۶. تابع نمایش آزمون
 function showQuiz(index) {
     feedbackElement.innerText = ""; 
     optionsContainer.innerHTML = ""; 
     quizContainer.style.display = "block"; 
-    nextButton.style.display = "none"; // مخفی کردن دکمه تا زمان پاسخ درست
+    nextButton.style.display = "none"; 
 
     questionElement.innerText = quizzes[index].question;
 
@@ -81,11 +89,11 @@ function showQuiz(index) {
     });
 }
 
-// ۶. تابع بررسی جواب آزمون
+// ۷. تابع بررسی جواب آزمون
 function checkAnswer(selectedIndex, correctIndex) {
     if (selectedIndex === correctIndex) {
-        score += 10; // اضافه شدن ۱۰ امتیاز
-        scoreElement.innerText = score; // به‌روزرسانی امتیاز روی صفحه
+        score += 10; 
+        scoreElement.innerText = score; 
         feedbackElement.innerText = "✅ آفرین! پاسخ شما کاملاً درست است. (+۱۰ امتیاز)";
         feedbackElement.style.color = "#4caf50";
         nextButton.style.display = "inline-block"; 
@@ -96,21 +104,14 @@ function checkAnswer(selectedIndex, correctIndex) {
     }
 }
 
-function updateProgress() {
-    const progressPercentage = ((currentLessonIndex + 1) / lessons.length) * 100;
-    progressBar.style.width = `${progressPercentage}%`;
-}
-
 // اجرای خودکار درس اول در ابتدای کار
 showLesson(currentLessonIndex);
 
-// ۷. منطق کلیک روی دکمه اصلی (مغز متفکر برنامه)
+// ۸. منطق کلیک روی دکمه اصلی
 nextButton.addEventListener("click", () => {
-    // اگر دکمه در حالت دعوت به آزمون بود
     if (quizContainer.style.display === "none") {
         showQuiz(currentLessonIndex);
     } else {
-        // اگر آزمون حل شده بود و باید به درس بعدی برویم
         currentLessonIndex++;
         if (currentLessonIndex < lessons.length) {
             showLesson(currentLessonIndex);
