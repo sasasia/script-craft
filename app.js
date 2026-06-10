@@ -74,7 +74,9 @@ function showLesson(index) {
 function showQuiz(index) {
     feedbackElement.innerText = ""; 
     optionsContainer.innerHTML = ""; 
-    quizContainer.style.display = "block"; 
+        quizContainer.style.display = "block";
+    quizContainer.classList.add("animate-fade-in");
+ 
     nextButton.style.display = "none"; 
 
     questionElement.innerText = quizzes[index].question;
